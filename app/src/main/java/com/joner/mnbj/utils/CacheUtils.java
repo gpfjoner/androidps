@@ -4,7 +4,7 @@ import android.content.Context;
 
 /**
  * Created by gpfei on 2018/4/11.
- *   
+ *
  */
 
 public class CacheUtils {
