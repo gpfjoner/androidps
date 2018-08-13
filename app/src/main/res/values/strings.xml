@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">迷你账本</string>
+    <string name="one">记账</string>
+    <string name="two">统计</string>
+    <string name="three">我的</string>
+
+
+    <string name="toast_login_again">再按一次退出程序</string>
+
 </resources>

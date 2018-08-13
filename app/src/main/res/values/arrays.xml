@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="infor_user_msg">
+        <item>信息</item>
+        <item>设置</item>
+        <item>通知</item>
+        <item>反馈</item>
+        <item>分享</item>
+    </string-array>
+</resources>
