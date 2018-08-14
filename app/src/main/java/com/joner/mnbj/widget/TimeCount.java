@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.CountDownTimer;
 import android.widget.Button;
 
+import com.joner.mnbj.activity.LoginActivity;
 import com.joner.mnbj.activity.MainActivity;
 import com.joner.mnbj.activity.SplashActivity;
 
@@ -34,7 +35,7 @@ public class TimeCount extends CountDownTimer {
     @Override
     public void onFinish() {
        // btn_count.setEnabled(true);
-        MainActivity.startAction(context);
+        LoginActivity.startAction(context);
     }
 
 }

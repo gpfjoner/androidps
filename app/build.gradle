@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.mob.sdk'
 
 android {
     compileSdkVersion 26
@@ -17,13 +16,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    MobSDK {
-        appKey "275aa3b287b70"
-        appSecret "bfa1deeffca4ad11f20a33058a57aec9"
 
-        ShareSDK {}
-
-    }
 }
 
 dependencies {
