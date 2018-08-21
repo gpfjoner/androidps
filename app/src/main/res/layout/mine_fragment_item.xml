@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150px"
+    android:layout_height="130px"
     android:layout_centerHorizontal="true"
-    android:minHeight="141px"
+    android:minHeight="111px"
     android:orientation="horizontal">
 
     <ImageView
+        android:layout_marginLeft="90px"
         android:id="@+id/ivItemIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,6 +16,7 @@
         android:src="@drawable/more" />
 
     <TextView
+        android:layout_marginLeft="90px"
         android:id="@+id/tvItemInfor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +34,8 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="30px"
-        android:src="@drawable/more" />
+        android:src="@drawable/more"
+        android:visibility="gone" />
     <!--android:layout_marginEnd="16dp"-->
 
 </com.zhy.autolayout.AutoRelativeLayout>

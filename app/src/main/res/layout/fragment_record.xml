@@ -2,11 +2,49 @@
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white_color"
     android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rbMoneyIn"
+            android:layout_width="0dp"
+            android:layout_height="150px"
+            android:layout_weight="1"
+            android:background="@color/remeber_color"
+            android:button="@null"
+            android:checked="true"
+            android:drawableLeft="@drawable/money_out"
+            android:gravity="center"
+            android:text="转入" />
+
+        <RadioButton
+            android:id="@+id/rbMoneyOut"
+            android:layout_width="0dp"
+            android:layout_height="150px"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableLeft="@drawable/money_in"
+            android:gravity="center"
+            android:text="转出"
+            android:textColor="@color/remeber_color" />
+    </RadioGroup>
+
     <TextView
-        android:id="@+id/tvText"
-        android:text="记账"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:id="@+id/tvLine"
+        style="@style/TextWideLineStyle"
+        android:layout_below="@+id/rg" />
+
+    <ListView
+        android:id="@+id/lvMsgList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvLine"></ListView>
 
 </com.zhy.autolayout.AutoRelativeLayout>

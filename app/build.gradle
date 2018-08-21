@@ -1,5 +1,12 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
 
+
+greendao {
+    schemaVersion 1
+    daoPackage 'com.joner.mnbj.greendao.gen'
+    targetGenDir 'src/main/java'
+}
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -32,6 +39,7 @@ dependencies {
     /*数据库信息*/
     compile 'org.greenrobot:greendao:3.2.2' // add library
     compile 'org.greenrobot:greendao-generator:3.2.2'
+
     //事件处理
     compile 'org.greenrobot:eventbus:3.0.0'
     //图片加载

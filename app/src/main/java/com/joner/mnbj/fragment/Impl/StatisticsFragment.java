@@ -7,6 +7,7 @@ import com.joner.mnbj.fragment.BaseFragment;
 
 /**
  * Created by gpfei on 2018/8/13.
+ * 统计操作
  */
 
 public class StatisticsFragment extends BaseFragment {
