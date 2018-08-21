@@ -10,7 +10,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.joner.mnbj.R;
+import com.joner.mnbj.adapter.SimpleTreeListViewAdapter;
+import com.joner.mnbj.bean.FileBean;
 import com.joner.mnbj.fragment.BaseFragment;
+import com.joner.mnbj.utils.tree.Node;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,11 +36,40 @@ public class RecordFragment extends BaseFragment {
     @BindView(R.id.lvMsgList)
     ListView lvMsgList;
     Unbinder unbinder;
+    private SimpleTreeListViewAdapter<Node> mAdapter;
+    private List<Node> datas;
+
 
     @Override
     public View initView() {
         View view = View.inflate(getContext(), R.layout.fragment_record, null);
         return view;
+    }
+
+    @Override
+    public void initData() throws IllegalAccessException {
+        addData();//加入数据
+        mAdapter = new SimpleTreeListViewAdapter<>(getActivity(), datas,1, lvMsgList);
+    }
+
+    private void addData() {
+        datas = new ArrayList<Node>();
+        Node node = new Node(1, 0, "目录1");
+        datas.add(node);
+        node = new Node(2, 0, "目录2");
+        datas.add(node);
+        node = new Node(3, 0, "目录3");
+        datas.add(node);
+        node = new Node(4, 1, "目录1-1");
+        datas.add(node);
+        node = new Node(5, 1, "目录1-2");
+        datas.add(node);
+        node = new Node(6, 2, "目录2-1");
+        datas.add(node);
+        node = new Node(7, 3, "目录3-1");
+        datas.add(node);
+        node = new Node(8, 7, "目录3-1-1");
+        datas.add(node);
     }
 
     @Override

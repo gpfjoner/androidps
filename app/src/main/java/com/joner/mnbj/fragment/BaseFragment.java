@@ -43,13 +43,17 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
-    public void initData() {
+    public void initData() throws IllegalAccessException {
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        initData();
+        try {
+            initData();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
     public abstract View initView();
 }
