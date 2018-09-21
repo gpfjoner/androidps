@@ -24,6 +24,7 @@ import com.joner.mnbj.utils.Consts;
 import com.joner.mnbj.utils.Logger;
 import com.joner.mnbj.utils.SpUtils;
 import com.joner.mnbj.utils.ToastUtils;
+import com.pgyersdk.crash.PgyCrashManager;
 import com.zhy.autolayout.AutoLinearLayout;
 
 import butterknife.BindView;
@@ -65,6 +66,7 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        PgyCrashManager.register(this);
         ButterKnife.bind(this);
         initView();
         initData();
@@ -114,5 +116,12 @@ public class MainActivity extends FragmentActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Logger.e(TAG,"MainActivity onDestroy ");
+        PgyCrashManager.unregister();
     }
 }

@@ -10,6 +10,7 @@ import com.joner.mnbj.greendao.gen.DaoSession;
 import com.joner.mnbj.utils.AppSHAUtils;
 import com.joner.mnbj.utils.Consts;
 import com.joner.mnbj.utils.Logger;
+import com.pgyersdk.crash.PgyCrashManager;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -36,6 +37,7 @@ public class BaseApplication extends Application {
         //MobSDK.init(this);
         setupDatabase(true);
         setupDatabase(false);
+        PgyCrashManager.register(this);// 注册Crash接口（必选）
         //android 7.0 手机系统调用摄像图操作。
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
