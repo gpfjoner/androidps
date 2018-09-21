@@ -54,7 +54,6 @@ public abstract class TreeListAdapter<T> extends BaseAdapter {
                 }
             }
         });
-
     }
 
     /**

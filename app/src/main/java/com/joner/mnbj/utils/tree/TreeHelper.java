@@ -1,6 +1,7 @@
 package com.joner.mnbj.utils.tree;
 
 import com.joner.mnbj.R;
+import com.joner.mnbj.utils.Logger;
 import com.joner.mnbj.utils.tree.annotation.TreeNodeId;
 import com.joner.mnbj.utils.tree.annotation.TreeNodeLabel;
 import com.joner.mnbj.utils.tree.annotation.TreeNodePid;
@@ -31,8 +32,8 @@ public class TreeHelper {
             int pId = -1;
             String lable = null;
             node = new Node();
-            Class<?> aClass = t.getClass();
-            Field[] fields = aClass.getFields();
+            Class aClass = t.getClass();
+            Field[] fields = aClass.getDeclaredFields();
             for (Field file : fields) {
                 if (file.getAnnotation(TreeNodeId.class) != null) {
                     file.setAccessible(true);
@@ -45,11 +46,12 @@ public class TreeHelper {
                 if (file.getAnnotation(TreeNodeLabel.class) != null) {
                     file.setAccessible(true);
                     lable = (String) file.get(t);
+                    Logger.e("TreeHelper", "TreeNodeLabel:" + lable);
                 }
-                node = new Node(ip, pId, lable);
-                nodes.add(node);
 
             }
+            node = new Node(ip, pId, lable);
+            nodes.add(node);
 
         }
         /**
@@ -57,15 +59,22 @@ public class TreeHelper {
          *   用集合中的每一个node与剩余进行比较。
          */
         for (int i = 0; i < nodes.size(); i++) {
-            Node fatherNode = nodes.get(i);
+
+            Node childernNode  = nodes.get(i);
+
             for (int j = i + 1; j < nodes.size(); j++) {
-                Node childernNode = nodes.get(j);
-                if (fatherNode.getpId() == childernNode.getpId()) {
-                    fatherNode.getChildern().add(childernNode);
-                    childernNode.setParent(fatherNode);
-                } else if (fatherNode.getId() == childernNode.getId()) {
-                    fatherNode.getChildern().add(childernNode);
-                    childernNode.setParent(fatherNode);
+
+                Node fatherNode = nodes.get(j);
+
+                if (fatherNode.getpId() == childernNode.getId()) {
+
+                    childernNode.getChildern().add(fatherNode);
+                    fatherNode.setParent(childernNode);
+
+                } else if (fatherNode.getId() == childernNode.getpId()) {
+
+                    childernNode.getChildern().add(fatherNode);
+                    fatherNode.setParent(childernNode);
                 }
 
             }
@@ -74,6 +83,7 @@ public class TreeHelper {
         for (Node n : nodes) {
             setNodeIcon(n);
         }
+        Logger.e("TreeHelper", "TreeHelper nodes: :" + nodes.size() + ".nodes:");
         return nodes;
     }
 
@@ -98,7 +108,6 @@ public class TreeHelper {
         //获取根节点
         List<Node> rootNodes = getRootNodes(nodes);
         for (Node node : rootNodes) {
-
             addNode(result, node, defaultExpandLevel, 1);
         }
 

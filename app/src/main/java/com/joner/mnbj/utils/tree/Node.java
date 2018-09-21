@@ -1,8 +1,5 @@
 package com.joner.mnbj.utils.tree;
 
-import com.joner.mnbj.utils.tree.annotation.TreeNodeId;
-import com.joner.mnbj.utils.tree.annotation.TreeNodeLabel;
-import com.joner.mnbj.utils.tree.annotation.TreeNodePid;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,16 +10,18 @@ import java.util.List;
  */
 
 public class Node {
-    @TreeNodeId
+
     private int id;
     /**
      * 层级
      */
-    @TreeNodePid
+
     private int pId = 0;
-    @TreeNodeLabel
+
     private String name;
 
+    public Node() {
+    }
 
     public Node(int id, int pId
             , String label) {

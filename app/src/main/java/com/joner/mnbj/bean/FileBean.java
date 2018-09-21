@@ -1,16 +1,30 @@
 package com.joner.mnbj.bean;
 
+import com.joner.mnbj.utils.tree.annotation.TreeNodeId;
+import com.joner.mnbj.utils.tree.annotation.TreeNodeLabel;
+import com.joner.mnbj.utils.tree.annotation.TreeNodePid;
+
 /**
  * Created by gpfei on 2018/8/21.
- *  文件属性描述
+ * 文件属性描述
  */
 
 public class FileBean {
-    private  int id;
+    @TreeNodeId
+    private int id;
+    @TreeNodePid
     private int pId;
-    private String desc;
-    private  String label;
+    private String label;
 
+    @TreeNodeLabel
+    private String desc;
+
+    public FileBean(int id, int pId, String desc) {
+        this.id = id;
+        this.pId = pId;
+        this.desc = desc;
+
+    }
 
 
     public int getId() {

@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/ivicon"
-        android:layout_width="90px"
-        android:layout_height="90px"
+        android:layout_width="50px"
+        android:layout_height="50px"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="30px" />
@@ -18,12 +18,12 @@
         android:id="@+id/tvtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="90px"
-        android:layout_toEndOf="@+id/ivItemIcon"
+        android:layout_alignBottom="@+id/ivicon"
+        android:layout_marginStart="15dp"
+        android:layout_toEndOf="@+id/ivicon"
         android:paddingLeft="52px"
         android:text="xxxxxx"
-        android:textColor="@color/text_color_mine_fragment"
-        android:textSize="16sp" />
+        android:textColor="#000"
+        android:textSize="18sp" />
 
 </com.zhy.autolayout.AutoRelativeLayout>
