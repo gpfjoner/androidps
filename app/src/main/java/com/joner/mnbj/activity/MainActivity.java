@@ -70,6 +70,13 @@ public class MainActivity extends FragmentActivity {
         ButterKnife.bind(this);
         initView();
         initData();
+
+        try  {
+            // code
+        } catch (Exception e) {
+         /** 新版本 **/
+             PgyCrashManager.reportCaughtException(e);
+        }
     }
 
     private void initData() {
