@@ -53,4 +53,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     //蒲公英
     implementation files('libs/pgyer_sdk_3.0.1.jar')
+    //微信登陆、分享 SDK
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 }
