@@ -1,4 +1,4 @@
-package com.joner.mnbj.bean;
+package com.joner.mnbj.utils.tree.bean;
 
 import com.joner.mnbj.utils.tree.annotation.TreeNodeId;
 import com.joner.mnbj.utils.tree.annotation.TreeNodeLabel;

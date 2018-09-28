@@ -9,6 +9,7 @@
     <color name="background_color">#15F5FD</color>
     <color name="text_color_mine_fragment">#555555</color>
     <color name="bottom_bar_logout_color">#2FA5DD</color>
+    <color name="mine_other_color">#000000</color>
 
     <color name="line_back">#f1f1f1</color>
     <color name="trans">#00000000</color>

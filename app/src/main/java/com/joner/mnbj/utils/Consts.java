@@ -7,6 +7,5 @@ package com.joner.mnbj.utils;
 public class Consts {
     /*数据库名称*/
     public static final String USER_INFOR_DB_NAME = "userinfor-db";
-    //
-    public static final String USER_STORE_INFOR_DB = "store-db";
+
 }

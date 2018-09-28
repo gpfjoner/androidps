@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true">
+
+    <RadioGroup
+        android:id="@+id/rg_pay"
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:layout_marginTop="20px"
+        android:background="@color/hint_back"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/pay_weixin"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="微信打赏"
+            android:textColor="@drawable/selector_bottom_text" />
+
+        <RadioButton
+            android:id="@+id/pay_zhifubo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:gravity="center"
+            android:text="支付宝打赏"
+            android:textColor="@drawable/selector_bottom_text" />
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/iv_pay_pic"
+        android:layout_width="400px"
+        android:layout_height="400px"
+        android:layout_below="@+id/rg_pay"
+        android:layout_centerInParent="true"
+        android:src="@drawable/weixin_pay" />
+</com.zhy.autolayout.AutoRelativeLayout>

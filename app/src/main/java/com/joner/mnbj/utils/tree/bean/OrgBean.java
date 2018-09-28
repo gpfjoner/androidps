@@ -1,4 +1,4 @@
-package com.joner.mnbj.bean;
+package com.joner.mnbj.utils.tree.bean;
 
 
 /**

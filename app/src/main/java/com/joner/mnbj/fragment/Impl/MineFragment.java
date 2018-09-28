@@ -1,5 +1,6 @@
 package com.joner.mnbj.fragment.Impl;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.joner.mnbj.R;
+import com.joner.mnbj.activity.mine.OtherForMineActivity;
 import com.joner.mnbj.adapter.MineFragmentAdapter;
 import com.joner.mnbj.fragment.BaseFragment;
 import com.joner.mnbj.utils.Logger;
@@ -84,6 +86,8 @@ public class MineFragment extends BaseFragment implements AdapterView.OnItemClic
             case 3:
                 break;
             case 4:
+                Intent otherMineIntent = new Intent(getContext() , OtherForMineActivity.class);
+                startActivity(otherMineIntent);
                 break;
         }
     }

@@ -57,7 +57,9 @@
         <activity
             android:name=".activity.LoginActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activity.mine.OtherForMineActivity"></activity>
+        <activity
+            android:name=".activity.mine.OtherForMineActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
     </application>
 
 </manifest>

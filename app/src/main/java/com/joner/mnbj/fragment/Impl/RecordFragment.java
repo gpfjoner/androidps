@@ -11,13 +11,11 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.Toast;
 
 import com.joner.mnbj.R;
-import com.joner.mnbj.adapter.SimpleTreeListViewAdapter;
-import com.joner.mnbj.bean.FileBean;
+import com.joner.mnbj.utils.tree.SimpleTreeListViewAdapter;
+import com.joner.mnbj.utils.tree.bean.FileBean;
 import com.joner.mnbj.fragment.BaseFragment;
-import com.joner.mnbj.utils.Logger;
 import com.joner.mnbj.utils.ToastUtils;
 import com.joner.mnbj.utils.tree.Node;
 import com.joner.mnbj.utils.tree.TreeListAdapter;
