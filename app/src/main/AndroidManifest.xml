@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
+    <uses-permission android:name="com.tencent.mm.permission.MM_MESSAGE" />
+
     <!-- 必选 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 获取网络状态 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络通信 -->
@@ -42,7 +44,7 @@
             android:value="1920" />
         <meta-data
             android:name="PGYER_APPID"
-            android:value="0747349aed78dc87483c555364b742f4"></meta-data>
+            android:value="0747349aed78dc87483c555364b742f4" />
 
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
@@ -59,7 +61,18 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.mine.OtherForMineActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".weixinshare.WXEntryActivity"
             android:windowSoftInputMode="adjustPan"></activity>
+
+        <receiver
+            android:name=".weixinshare.AppRegister"
+            android:permission="com.tencent.mm.plugin.permission.SEND">
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

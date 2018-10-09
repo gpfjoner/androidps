@@ -1,5 +1,6 @@
 package com.joner.mnbj.activity.mine;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 import com.joner.mnbj.R;
 import com.joner.mnbj.utils.ToastUtils;
+import com.joner.mnbj.weixinshare.WXEntryActivity;
+import com.tencent.mm.opensdk.modelmsg.WXTextObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,9 +52,10 @@ public class OtherForMineActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.tv_share:
                 ToastUtils.show(OtherForMineActivity.this, "share", false);
+                ShareToWeiXin();
                 break;
             case R.id.tvPayMoney:
-               // ToastUtils.show(OtherForMineActivity.this, "tvPayMoney", false);
+                // ToastUtils.show(OtherForMineActivity.this, "tvPayMoney", false);
                 break;
             case R.id.pay_weixin:
                 ToastUtils.show(OtherForMineActivity.this, "pay_weixin", false);
@@ -70,5 +74,12 @@ public class OtherForMineActivity extends AppCompatActivity {
                 this.finish();
                 break;
         }
+    }
+
+    //分享到微信朋友圈或者分享给好友
+    private void ShareToWeiXin() {
+        Intent shareACT = new Intent(OtherForMineActivity.this, WXEntryActivity.class);
+        startActivity(shareACT);
+
     }
 }

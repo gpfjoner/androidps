@@ -3,6 +3,7 @@
     <string name="one">记账</string>
     <string name="two">统计</string>
     <string name="three">我的</string>
+    <string name="WXShareStr">我正在使用一个超省事的记事本，你也试试吧！！！</string>
 
 
     <string name="toast_login_again">再按一次退出程序</string>
