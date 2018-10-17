@@ -3,16 +3,21 @@ package com.joner.mnbj.fragment.Impl;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 
 import com.joner.mnbj.R;
+import com.joner.mnbj.adapter.AccountBookAdapter;
+import com.joner.mnbj.entity.AccountBookEntity;
 import com.joner.mnbj.utils.tree.SimpleTreeListViewAdapter;
 import com.joner.mnbj.utils.tree.bean.FileBean;
 import com.joner.mnbj.fragment.BaseFragment;
@@ -34,15 +39,16 @@ import butterknife.Unbinder;
  */
 
 public class RecordFragment extends BaseFragment {
-    @BindView(R.id.rbMoneyIn)
-    RadioButton rbMoneyIn;
-    @BindView(R.id.rbMoneyOut)
-    RadioButton rbMoneyOut;
-    @BindView(R.id.lvMsgList)
-    ListView lvMsgList;
+
+    @BindView(R.id.detail_list)
+    RecyclerView detailList;
+
+    @BindView(R.id.load_btn)
+    View saveView;
+
     Unbinder unbinder;
-    private SimpleTreeListViewAdapter<FileBean> mAdapter;
-    private List<FileBean> datas;
+    private AccountBookAdapter accountBookAdapter;
+    private ArrayList<AccountBookEntity> datas;
 
 
     @Override
@@ -54,59 +60,29 @@ public class RecordFragment extends BaseFragment {
     @Override
     public void initData() throws IllegalAccessException {
         addData();//加入数据
-        //Logger.e(TAG, "" + datas.size() + " msg:" + datas.get(0).getDesc());
-        mAdapter = new SimpleTreeListViewAdapter<>(getActivity(), datas, 1, lvMsgList);
-        lvMsgList.setAdapter(mAdapter);
-        //点击事件
-        mAdapter.setOnTreeClickListener(new TreeListAdapter.OnTreeNodeClickListener() {
-            @Override
-            public void onClick(Node node, int position) {
-                if (node.isLeaf()) {
-                    ToastUtils.show(getContext(), node.getName(), false);
-                }
-            }
-        });
-        lvMsgList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+        accountBookAdapter = new AccountBookAdapter(getActivity(), datas);
 
-                // ToastUtils.show(getActivity(),"长按显示",false);
-                final EditText et = new EditText(getContext());
-                new AlertDialog.Builder(getContext()).setTitle("插入").setView(et).setPositiveButton("sure", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if (TextUtils.isEmpty(et.getText().toString())){
-                            ToastUtils.show(getActivity(),"不能为空",false);
-                            return;
-                        }
-                        mAdapter.addExtraNode(position, et.getText().toString());
+        LinearLayoutManager manager = new LinearLayoutManager(getActivity());
+        manager.setOrientation(LinearLayout.VERTICAL);
 
-                    }
-                }).setNegativeButton("no", null).show();
-                //false 双触发。true
-                return true;
-            }
-        });
+        detailList.setLayoutManager(manager);
+        detailList.setAdapter(accountBookAdapter);
+
     }
 
     private void addData() {
-        datas = new ArrayList<FileBean>();
-        FileBean node = new FileBean(1, 0, "目录1");
-        datas.add(node);
-        node = new FileBean(2, 0, "目录2");
-        datas.add(node);
-        node = new FileBean(3, 0, "目录3");
-        datas.add(node);
-        node = new FileBean(4, 1, "目录1-1");
-        datas.add(node);
-        node = new FileBean(5, 2, "目录2-1");
-        datas.add(node);
-        node = new FileBean(6, 2, "目录2-2");
-        datas.add(node);
-        node = new FileBean(7, 3, "目录3-1");
-        datas.add(node);
-        node = new FileBean(8, 7, "目录3-1-1");
-        datas.add(node);
+        datas = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            AccountBookEntity entity = new AccountBookEntity();
+            for (int j = 0; j <= i + 1; j++) {
+                AccountBookEntity entity1 = new AccountBookEntity();
+                entity1.setContent("工资收入收入收入收入收入收入收入收入");
+                entity1.setMoney(100 + j * 10);
+                entity1.setDate("1999.09.09");
+                entity.getChildDetail().add(entity1);
+            }
+            datas.add(entity);
+        }
     }
 
     @Override
@@ -123,13 +99,5 @@ public class RecordFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.rbMoneyIn, R.id.rbMoneyOut})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.rbMoneyIn:
-                break;
-            case R.id.rbMoneyOut:
-                break;
-        }
-    }
+
 }

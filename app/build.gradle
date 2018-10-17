@@ -55,4 +55,5 @@ dependencies {
     implementation files('libs/pgyer_sdk_3.0.1.jar')
     //微信登陆、分享 SDK
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
 }
