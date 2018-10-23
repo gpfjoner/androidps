@@ -3,10 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <TextView
         android:id="@+id/tvText"
-        android:text="统计"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="统计" />
+
+    <com.joner.mnbj.view.CircularExhibitionView
+        android:id="@+id/circular"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
 
 </com.zhy.autolayout.AutoRelativeLayout>
