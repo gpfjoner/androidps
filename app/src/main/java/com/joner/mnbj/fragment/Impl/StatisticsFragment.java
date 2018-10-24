@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
+import android.widget.Toast;
 
 import com.joner.mnbj.R;
 import com.joner.mnbj.entity.CircularDataEntity;
 import com.joner.mnbj.fragment.BaseFragment;
+import com.joner.mnbj.view.CircularExhibitionClickListener;
 import com.joner.mnbj.view.CircularExhibitionView;
 
 import java.util.ArrayList;
@@ -48,11 +50,18 @@ public class StatisticsFragment extends BaseFragment {
         entity2.setArcPercent(0.2f);
         entity2.setBackColor(Color.BLUE);
         entity2.setTextColor(Color.WHITE);
-        ArrayList<CircularDataEntity> data = new ArrayList<>();
+        final ArrayList<CircularDataEntity> data = new ArrayList<>();
         data.add(entity);
         data.add(entity1);
         data.add(entity2);
         circularExhibitionView.setData(data);
+        circularExhibitionView.setOnClickListener(new CircularExhibitionClickListener() {
+            @Override
+            public void onClick(int position) {
+                Toast.makeText(getActivity(), data.get(position).getArcName(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }

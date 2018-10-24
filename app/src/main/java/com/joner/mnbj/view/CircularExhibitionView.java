@@ -8,7 +8,7 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 
@@ -33,6 +33,7 @@ public class CircularExhibitionView extends View {
     private Paint mCircularPaint;
     private Paint mTextPaint;
     private ArrayList<CircularDataEntity> circularData;
+    private CircularExhibitionClickListener circularExhibitionClickListener;
 
     public CircularExhibitionView(Context context) {
         this(context, null);
@@ -64,6 +65,9 @@ public class CircularExhibitionView extends View {
         initAnimator();
     }
 
+    public void setOnClickListener(CircularExhibitionClickListener circularExhibitionClickListener) {
+        this.circularExhibitionClickListener = circularExhibitionClickListener;
+    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -153,6 +157,54 @@ public class CircularExhibitionView extends View {
             }
         });
         anim.start();
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        float x = event.getX() - cirX;
+        float y = event.getY() - cirY;
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_MOVE:
+                break;
+            case MotionEvent.ACTION_UP:
+                int position = getClickPosition(x, y);
+                if (position >= 0) {
+                    if (circularExhibitionClickListener != null) {
+                        circularExhibitionClickListener.onClick(position);
+                    }
+                } else {
+
+                }
+        }
+        return true;
+    }
+
+    private int getClickPosition(float x, float y) {
+        double angle = -startAngle;
+        if (x >= cirR || x <= -cirR || y >= cirR || y <= -cirR) {
+            return -2;
+        } else {
+            if (x > 0 && y > 0) {
+                angle += Math.toDegrees(Math.atan(Math.abs(y) / Math.abs(x)));
+            } else if (x < 0 && y > 0) {
+                angle += Math.toDegrees(Math.atan(Math.abs(x) / Math.abs(y))) + 90;
+            } else if (x < 0 && y < 0) {
+                angle += Math.toDegrees(Math.atan(Math.abs(y) / Math.abs(x))) + 180;
+            } else if (x > 0 && y < 0) {
+                angle += Math.toDegrees(Math.atan(Math.abs(x) / Math.abs(y))) + 270;
+            }
+        }
+        double sumAngle = startAngle;
+        for (int i = 0; i < circularData.size(); i++) {
+            CircularDataEntity entity = circularData.get(i);
+            sumAngle += entity.getArcPercent() * 360;
+            if (angle < sumAngle) {
+                return i;
+            }
+        }
+        return -1;
     }
 
 }
